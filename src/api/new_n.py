@@ -1,5 +1,6 @@
 from fastapi import APIRouter
-from migration.create_cve_index import client, index_name
+from api.help import save_report
+from migration.create_cve_index import client, index_name, save_index_name
 
 router = APIRouter(tags=["10 newest CVEs"])
 
@@ -23,4 +24,5 @@ def get_n_new_cves(quantity: int) -> list:
         }
     )
     result = [hit["_source"] for hit in response["hits"]["hits"]]
+    save_report(result)
     return result

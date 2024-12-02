@@ -1,7 +1,6 @@
-from api.help import read_json
+from api.help import save_report
 from fastapi import APIRouter
-import re
-from migration.create_cve_index import client, index_name
+from migration.create_cve_index import client, index_name, save_index_name
 
 router = APIRouter(tags=["Search by keyword"])
 
@@ -34,4 +33,5 @@ def find_keyword(keyword: str) -> list:
     )
 
     result = [hit["_source"] for hit in response["hits"]["hits"]]
+    save_report(result)
     return result

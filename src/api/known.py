@@ -1,4 +1,4 @@
-from api.help import read_json
+from api.help import save_report
 from fastapi import APIRouter
 from migration.create_cve_index import client, index_name
 
@@ -25,4 +25,5 @@ def get_known_cve(max_quantity: int) -> list:
         } 
     )
     result = [hit["_source"] for hit in response["hits"]["hits"]]
+    save_report(result)
     return result

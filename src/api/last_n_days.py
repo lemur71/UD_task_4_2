@@ -1,8 +1,8 @@
-from api.help import read_json
+from api.help import save_report
 from datetime import date, datetime, timedelta
 from fastapi import APIRouter
 from elasticsearch import Elasticsearch
-from migration.create_cve_index import client, index_name, ELASTIC_URL
+from migration.create_cve_index import client, index_name, save_index_name
 
 router = APIRouter(tags=["CVEs for past 5 days (max 40 CVEs)"])
 
@@ -29,4 +29,5 @@ def get_recent_cves(days: int, max_quantity: int) -> list:
     })
 
     result = [hit["_source"] for hit in response["hits"]["hits"]]
+    save_report(result)
     return result
