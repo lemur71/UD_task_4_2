@@ -2,7 +2,7 @@ import json
 from migration.create_cve_index import client, save_index_name
 
 # path to json file
-CVE_JSON = "C:\\Users\\1\\Desktop\\UD\\4 PYTHON\\task4_2\\known_exploited_vulnerabilities.json"
+CVE_JSON = "<YOUR_PATH_YO_CVE_JSON>"
 
 def read_json() -> dict:
     """converts json to dictionary"""
