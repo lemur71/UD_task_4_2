@@ -2,7 +2,7 @@ import json
 from migration.create_cve_index import client, save_index_name
 
 # path to json file
-CVE_JSON = "<YOUR_PATH_YO_CVE_JSON>"
+CVE_JSON = "<YOUR_PATH_YOUR_CVE_JSON>"
 
 def read_json() -> dict:
     """converts json to dictionary"""
